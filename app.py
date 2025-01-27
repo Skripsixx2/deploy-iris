@@ -1,13 +1,11 @@
 from flask import Flask, request, render_template
 import pickle
 
-model = None
+
 app = Flask(__name__)
 
-def load_model():
-    global model
-    with open('model.pkl', 'rb') as f:
-        model = pickle.load(f)
+model_file = open('model.pkl', 'rb')
+model = pickle.load(model_file, encoding='bytes')
 
 @app.route('/')
 def index():
@@ -35,5 +33,4 @@ def predict():
 
 
 if __name__ == '__main__':
-    load_model()
     app.run(debug=True)
