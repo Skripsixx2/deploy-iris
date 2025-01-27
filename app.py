@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template
 import pickle
 
+model = None
 app = Flask(__name__)
 
 def load_model():
