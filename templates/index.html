@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+            rel="stylesheet"
+        />
+        <title>Aplikasi Prediksi Class Iris</title>
+    </head>
+    <body
+        class="
+            flex flex-col
+            justify-between
+            item-center
+            p-8
+            min-h-screen
+            bg-gradient-to-r
+            from-green-400
+            to-blue-500
+            text-gray-800
+            md:flex-row
+        "
+    >
+        <main class="bg-white p-16 rounded-lg">
+            <h1 class="text-3xl font-bold mb-8">
+                Prediksi Class Iris:
+            </h1>
+
+            <form
+                action="{{ url_for('predict') }}"
+                method="post"
+                class="flex flex-col"
+            >
+                <label for="slength" class="mb-2">Sepal Length</label>
+                <input
+                    type="text"
+                    name="slength"
+                    placeholder="Sepal Length"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+
+                <label for="swidth" class="mb-2">Sepal Width</label>
+                <input
+                    type="text"
+                    name="swidth"
+                    placeholder="Sepal Width"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+
+                <label for="plength" class="mb-2">Petal Length</label>
+                <input
+                    type="text"
+                    name="plength"
+                    placeholder="Petal Length"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+
+                <label for="pwidth" class="mb-2">Petal Width</label>
+                <input
+                    type="text"
+                    name="pwidth"
+                    placeholder="Petal Width"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+
+                <button
+                    type="submit"
+                    class="
+                        flex
+                        justify-center
+                        align-center
+                        mt-8
+                        p-4
+                        bg-gradient-to-r
+                        from-green-400
+                        to-blue-500
+                        text-white
+                        rounded-md
+                    "
+                >
+                    PREDIKSI SEKARANG
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-arrow-right ml-4"
+                    >
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </form>
+        </main>
+        <section class="mt-8 h-full flex-auto rounded-lg md:mt-0 md:ml-8">
+            <div class="bg-white p-16 rounded-lg">
+                <h1 class="text-2xl mb-8">
+                    Data Anda Masuk Kedalam Kelas :
+                </h1>
+                <h2 class="text-5xl font-bold">Class {{ classIris }}</h2>
+                {% if (classIris) != 0 %}
+                <div class="mt-8">
+                    <p>Sepal Length: {{ Slength }} </p>
+                    <p>Sepal Width: {{ Swidth }} </p>
+                    <p>Petal Length: {{ Plength }} </p>
+                    <p>Petal Width: {{ Pwidth }} </p>
+                </div>
+                {% endif %}
+            </div>
+        </section>
+    </body>
+</html>
